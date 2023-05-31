@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
+  # Generate HTML tag string
   module Tag
     def self.build(tag, options = {}, &block)
       tag = tag.to_s.downcase
@@ -10,11 +11,8 @@ module HexletCode
         end.join
       end
 
-      if %w[br hr img input wbr].include? tag.to_s.downcase
-        "<#{tag}#{attributes}>"
-      else
-        "<#{tag}#{attributes}>#{block.call if block_given?}</#{tag}>"
-      end
+      single_tags = %w[br hr img input wbr]
+      "<#{tag}#{attributes}>" + "#{block.call if block_given?}</#{tag}>" unless single_tags.include? tag.to_s.downcase
     end
   end
 end
