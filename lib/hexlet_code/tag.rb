@@ -12,7 +12,9 @@ module HexletCode
       end
 
       single_tags = %w[br hr img input wbr]
-      "<#{tag}#{attributes}>" + "#{block.call if block_given?}</#{tag}>" unless single_tags.include? tag.to_s.downcase
+      result = "<#{tag}#{attributes}>"
+      result += "#{block.call if block_given?}</#{tag}>" unless single_tags.include? tag
+      result
     end
   end
 end
