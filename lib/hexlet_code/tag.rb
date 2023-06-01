@@ -3,17 +3,17 @@
 module HexletCode
   # Generate HTML tag string
   module Tag
-    def self.build(tag, options = {}, &block)
+    def self.build(tag, options = {})
       tag = tag.to_s.downcase
       if options.any?
-        attributes = options.each_with_object([]) do |(key, value), acc|
-          acc << " #{key}=\"#{value}\""
+        attributes = options.keys.sort.each_with_object([]) do |key, acc|
+          acc << " #{key}=\"#{options[key]}\""
         end.join
       end
 
       single_tags = %w[br hr img input wbr]
       result = "<#{tag}#{attributes}>"
-      result += "#{block.call if block_given?}</#{tag}>" unless single_tags.include? tag
+      result += "#{yield if block_given?}</#{tag}>" unless single_tags.include? tag
       result
     end
   end
