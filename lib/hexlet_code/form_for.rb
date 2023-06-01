@@ -23,16 +23,7 @@ module HexletCode
     end
 
     def input(name, options = {})
-      options[:value] = @data.public_send name
-
-      options[:name] = name
-      tag = 'input'
-      if options[:as] == :text
-        tag = 'textarea'
-        options[:cols] ||= 20
-        options[:rows] ||= 40
-      end
-      options[:type] ||= 'text' if tag == 'input'
+      (tag, options) = input_options(name, options)
 
       reject_keys = ->(key) { key == :as || options[:as] == :text && key == :value }
       node = HexletCode::Tag.build(tag, options.reject { |key| reject_keys.call key }) do
@@ -40,8 +31,24 @@ module HexletCode
       end
 
       @nodes << node
-
       node
+    end
+
+    private
+
+    def input_options(name, options = {})
+      options[:value] = @data.public_send name
+      options[:name] = name
+      tag = 'input'
+
+      if options[:as] == :text
+        tag = 'textarea'
+        options[:cols] ||= 20
+        options[:rows] ||= 40
+      end
+
+      options[:type] ||= 'text' if tag == 'input'
+      [tag, options]
     end
   end
 end
