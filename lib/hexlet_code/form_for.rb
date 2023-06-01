@@ -25,7 +25,7 @@ module HexletCode
     def input(name, options = {})
       (tag, options) = input_options(name, options)
 
-      label = format '<label for="%<name>s">%<Name>s</label>', name: name, Name: name.capitalize
+      label = format '<label for="%<name>s">%<Name>s</label>', name:, Name: name.capitalize
 
       reject_keys = ->(key) { key == :as || options[:as] == :text && key == :value }
       input = HexletCode::Tag.build(tag, options.reject { |key| reject_keys.call key }) do
@@ -37,7 +37,7 @@ module HexletCode
 
     def submit(value = nil)
       value ||= 'Save'
-      @nodes << HexletCode::Tag.build(:input, { type: :submit, value: value })
+      @nodes << HexletCode::Tag.build(:input, { type: :submit, value: })
       nodes[-1]
     end
 
