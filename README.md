@@ -26,22 +26,29 @@ User = Struct.new(:name, :job, :gender, keyword_init: true)
 user = User.new name: 'rob', job: 'hexlet', gender: 'm'
 
 HexletCode.form_for user, url: '#' do |f|
-  f.input :name, class: 'user-input'
-  f.input :job
-end
-
-# <form action="#" method="post">
-#   <input class="user-input" name="name" type="text" value="rob">
-#   <input name="job" type="text" value="">
-# </form>
-
-HexletCode.form_for user, url: '#' do |f|
   f.input :job, as: :text, rows: 50, cols: 50
 end
 
 # <form action="#" method="post">
+#   <label for="job">Job</label>
 #   <textarea cols="50" name="job" rows="50">hexlet</textarea>
 # </form>
+
+user = User.new job: 'hexlet'
+HexletCode.form_for user, url: '#' do |f|
+  f.input :name
+  f.input :job
+  f.submit 'Wow'
+end
+
+# <form action="#" method="post">
+#   <label for="name">Name</label>
+#   <input name="name" type="text">
+#   <label for="job">Job</label>
+#   <input name="job" type="text" value="hexlet">
+#   <input type="submit" value="Wow">
+# </form>
+
 ```
 
 ## Development

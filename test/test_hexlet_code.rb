@@ -60,20 +60,14 @@ class HexletCodeTest < Minitest::Test
   def test_form_for_submit
     user = User.new job: 'hexlet'
 
-    html_assert_equal(@html[5]) do
-      HexletCode.form_for user do |f|
-        f.input :name
-        f.input :job
-        f.submit
+    [[5, nil], [6, 'Wow']].each do |(idx, value)|
+      html_assert_equal(@html[idx]) do
+        HexletCode.form_for user do |f|
+          f.input :name
+          f.input :job
+          f.submit value
+        end
       end
     end
-
-    # html_assert_equal(@html[6]) do
-    #   HexletCode.form_for user, url: '#' do |f|
-    #     f.input :name
-    #     f.input :job
-    #     f.submit 'Wow'
-    #   end
-    # end
   end
 end
