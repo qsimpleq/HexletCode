@@ -27,7 +27,7 @@ module HexletCode
 
       label = format '<label for="%<name>s">%<Name>s</label>', name:, Name: name.capitalize
 
-      reject_keys = ->(key) { key == :as || options[:as] == :text && key == :value }
+      reject_keys = ->(key) { key == :as || (key == :value && options[:as] == :text) }
       input = HexletCode::Tag.build(tag, options.reject { |key| reject_keys.call key }) do
         options[:value] if options[:as] == :text
       end
