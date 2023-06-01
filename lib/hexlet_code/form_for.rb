@@ -25,30 +25,42 @@ module HexletCode
     def input(name, options = {})
       (tag, options) = input_options(name, options)
 
+      label = format '<label for="%<name>s">%<Name>s</label>', name: name, Name: name.capitalize
+
       reject_keys = ->(key) { key == :as || options[:as] == :text && key == :value }
-      node = HexletCode::Tag.build(tag, options.reject { |key| reject_keys.call key }) do
+      input = HexletCode::Tag.build(tag, options.reject { |key| reject_keys.call key }) do
         options[:value] if options[:as] == :text
       end
 
-      @nodes << node
-      node
+      @nodes.push label, input
+    end
+
+    def submit(value = nil)
+      value ||= 'Save'
+      @nodes << HexletCode::Tag.build(:input, { type: :submit, value: value })
+      nodes[-1]
     end
 
     private
 
     def input_options(name, options = {})
-      options[:value] = @data.public_send name
+      (tag, options) = options[:as] == :text ? input_textarea_option_defaults(options) : input_option_defaults(options)
+
+      value = @data.public_send name
+      value.nil? ? options.delete(:value) : options[:value] = value
       options[:name] = name
-      tag = 'input'
-
-      if options[:as] == :text
-        tag = 'textarea'
-        options[:cols] ||= 20
-        options[:rows] ||= 40
-      end
-
-      options[:type] ||= 'text' if tag == 'input'
       [tag, options]
+    end
+
+    def input_option_defaults(options = {})
+      options[:type] ||= 'text'
+      ['input', options]
+    end
+
+    def input_textarea_option_defaults(options = {})
+      options[:cols] ||= 20
+      options[:rows] ||= 40
+      ['textarea', options]
     end
   end
 end

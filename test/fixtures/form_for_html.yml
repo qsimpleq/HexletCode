@@ -1,18 +1,40 @@
 1: |
   <form action="#" method="post">
+    <label for="name">Name</label>
     <input name="name" type="text" value="rob">
+    <label for="job">Job</label>
     <textarea cols="20" name="job" rows="40">hexlet</textarea>
   </form>
 2: |
   <form action="#" method="post">
+    <label for="name">Name</label>
     <input class="user-input" name="name" type="text" value="rob">
+    <label for="job">Job</label>
     <input name="job" type="text" value="hexlet">
   </form>
 3: |
   <form action="#" method="post">
+    <label for="job">Job</label>
     <textarea cols="20" name="job" rows="40">hexlet</textarea>
   </form>
 4: |
   <form action="#" method="post">
+    <label for="job">Job</label>
     <textarea cols="50" name="job" rows="50">hexlet</textarea>
+  </form>
+5: |
+  <form action="#" method="post">
+    <label for="name">Name</label>
+    <input name="name" type="text">
+    <label for="job">Job</label>
+    <input name="job" type="text" value="hexlet">
+    <input type="submit" value="Save">
+  </form>
+6: |
+  <form>
+    <label for="name">Name</label>
+    <input name="name" type="text" value="">
+    <label for="job">Job</label>
+    <input name="job" type="text" value="hexlet">
+    <input type="submit" value="Wow">
   </form>
