@@ -11,6 +11,7 @@ module HexletCode
 
   def self.form_for(data, options = {})
     form = HexletCode::FormFor.new(data, options)
+
     form.render { yield form if block_given? }
   end
 end

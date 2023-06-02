@@ -6,8 +6,8 @@ class HexletCodeTest < Minitest::Test
   User = Struct.new(:name, :job, :gender, keyword_init: true)
 
   def setup
-    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
-    @html = YAML.safe_load fixture_load('form_for_html.yml')
+    @user = User.new(name: 'rob', job: 'hexlet', gender: 'm')
+    @html = YAML.safe_load(fixture_load('form_for_html.yml'))
   end
 
   def test_a_version_number
