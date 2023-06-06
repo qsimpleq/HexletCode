@@ -49,7 +49,13 @@ module HexletCode
       (tag, options) = options[:as] == :text ? input_textarea_option_defaults(options) : input_option_defaults(options)
 
       value = @data.public_send(name)
-      value.nil? ? options.delete(:value) : options[:value] = value
+
+      if value.nil?
+        options.delete(:value)
+      else
+        options[:value] = value
+      end
+
       options[:name] = name
 
       [tag, options]
