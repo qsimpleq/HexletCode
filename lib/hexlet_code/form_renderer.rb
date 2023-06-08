@@ -12,28 +12,26 @@ module HexletCode
       @form = form
     end
 
+    def html_nodes_string(string = '')
+      return '' unless @form.nodes.any?
+
+      string += "\n"
+      string += @form.nodes.map do |node|
+        tag_params = [node.name, node.attributes]
+        tag_params << node.block unless node.block.nil?
+
+        "#{HTML_INDENT}#{HexletCode::Tag.build(*tag_params)}"
+      end.join("\n")
+
+      "#{string}\n"
+    end
+
     def to_html
       form_node = HexletCode::FormTags::Form.new(@form.attributes)
       html = ''
       html += HexletCode::Tag.build(form_node.name, form_node.attributes) do
-        html_nodes_string(html)
+        html += html_nodes_string(html)
       end
     end
-  end
-
-  private
-
-  def html_nodes_string(string = '')
-    return '' unless @form.nodes.any?
-
-    string += "\n"
-    string += @form.nodes.map do |node|
-      tag_params = [node.name, node.attributes]
-      tag_params << node.block unless node.block.nil?
-
-      "#{HTML_INDENT}#{HexletCode::Tag.build(*tag_params)}"
-    end.join("\n")
-
-    "#{string}\n"
   end
 end

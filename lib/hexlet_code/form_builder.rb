@@ -37,7 +37,7 @@ module HexletCode
     end
 
     def input(name, attributes = {})
-      only_attributes = input_attributes(attributes)
+      only_attributes = input_attributes(name, attributes)
 
       label(name)
 
@@ -65,13 +65,12 @@ module HexletCode
       end
     end
 
-    private
-
-    def input_attributes(attributes = {})
+    def input_attributes(name, attributes = {})
       reject_keys = ->(key) { key == :as || (key == :value && attributes[:as] == :text) }
       only_attributes = attributes.reject { |key| reject_keys.call key }
       only_attributes[:name] = name
       only_attributes[:value] = @data.public_send(name)
+      only_attributes
     end
   end
 end
