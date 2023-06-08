@@ -9,8 +9,8 @@ module HexletCode
   class Form
     attr_reader :form
 
-    def initialize(data = Struct.new, attributes = {}, &block)
-      @form = HexletCode::FormBuilder.new(data, attributes, &block)
+    def initialize(data = Struct.new, attributes = {}, &)
+      @form = HexletCode::FormBuilder.new(data, attributes, &)
     end
 
     def render(type = :html)

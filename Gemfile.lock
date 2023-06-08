@@ -42,7 +42,7 @@ DEPENDENCIES
   hexlet_code!
   minitest (~> 5.0)
   rake (~> 13.0)
-  rubocop (~> 1.51)
+  rubocop
   rubocop-minitest
   rubocop-rake
 
