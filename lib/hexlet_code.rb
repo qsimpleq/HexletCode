@@ -7,11 +7,10 @@ module HexletCode
   INDENT = ' ' * 2
 
   autoload :Tag, 'hexlet_code/tag'
-  autoload :FormFor, 'hexlet_code/form_for'
+  autoload :Form, 'hexlet_code/form'
 
   def self.form_for(data, options = {})
-    form = HexletCode::FormFor.new(data, options)
-
-    form.render { yield form if block_given? }
+    form = HexletCode::Form.new(data, options) { yield _1 if block_given? }
+    form.render
   end
 end
