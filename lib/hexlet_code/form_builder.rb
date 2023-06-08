@@ -51,7 +51,7 @@ module HexletCode
       tag
     end
 
-    def submit(value, attributes = {})
+    def submit(value = nil, attributes = {})
       attributes[:value] = value
       tag = HexletCode::FormTags::InputSubmit.new(attributes)
       @nodes << tag
