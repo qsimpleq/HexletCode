@@ -5,7 +5,6 @@ require_relative 'form_tags/form'
 require_relative 'tag'
 
 module HexletCode
-
   class FormRenderer
     HTML_INDENT = ' ' * 2
 
@@ -14,9 +13,9 @@ module HexletCode
     end
 
     def to_html
-      form_node = HexletCode::FormTags::Form.new(@form.attributes)
+      form_node = FormTags::Form.new(@form.attributes)
       html = ''
-      HexletCode::Tag.build(form_node.name, form_node.attributes) do
+      Tag.build(form_node.name, form_node.attributes) do
         html += generate_html_from_nodes(html)
       end
     end
@@ -31,7 +30,7 @@ module HexletCode
         tag_params = [node.name, node.attributes]
         tag_params << node.block unless node.block.nil?
 
-        "#{HTML_INDENT}#{HexletCode::Tag.build(*tag_params)}"
+        "#{HTML_INDENT}#{Tag.build(*tag_params)}"
       end.join("\n")
 
       "#{string}\n"
