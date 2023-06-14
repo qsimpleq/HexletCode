@@ -10,11 +10,6 @@ module HexletCode
         type: 'submit',
         value: 'Save'
       }.freeze
-
-      def initialize(attributes = {})
-        super
-        @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
-      end
     end
   end
 end

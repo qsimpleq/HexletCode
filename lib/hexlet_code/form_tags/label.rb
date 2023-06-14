@@ -9,8 +9,6 @@ module HexletCode
 
       def initialize(attributes = {})
         super
-        @name = NAME
-        @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
         @block = -> { @value }
         @attributes = @attributes.except(:value)
       end

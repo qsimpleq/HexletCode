@@ -6,12 +6,14 @@ module HexletCode
       attr_reader :name, :block
       attr_accessor :value, :attributes
 
+      NAME = :base_tag
       DEFAULT_ATTRIBUTES = {}.freeze
 
       def initialize(attributes = {})
+        @name = self.class::NAME
         attributes.delete(:value) if attributes[:value].nil?
         @value = attributes[:value]
-        @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
+        @attributes = {}.merge(self.class::DEFAULT_ATTRIBUTES, attributes)
       end
     end
   end
