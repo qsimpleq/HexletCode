@@ -34,7 +34,7 @@ module HexletCode
     def label(name, attributes = {})
       attributes[:for] ||= name
       attributes[:value] ||= name.capitalize
-      tag = HexletCode::FormTags::Label.new(attributes)
+      tag = FormTags::Label.new(attributes)
       @nodes << tag
 
       tag
@@ -55,7 +55,7 @@ module HexletCode
 
     def submit(value = nil, attributes = {})
       attributes[:value] = value
-      tag = HexletCode::FormTags::InputSubmit.new(attributes)
+      tag = FormTags::InputSubmit.new(attributes)
       @nodes << tag
 
       tag
