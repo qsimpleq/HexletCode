@@ -9,7 +9,7 @@ module HexletCode
       DEFAULT_ATTRIBUTES = {}.freeze
 
       def initialize(attributes = {})
-        attributes.delete(:value) if attributes.key?(:value) && attributes[:value].nil?
+        attributes.delete(:value) if attributes[:value].nil?
         @value = attributes[:value]
         @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
       end

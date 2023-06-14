@@ -12,7 +12,17 @@ module HexletCode
       @form = form
     end
 
-    def html_nodes_string(string = '')
+    def to_html
+      form_node = HexletCode::FormTags::Form.new(@form.attributes)
+      html = ''
+      HexletCode::Tag.build(form_node.name, form_node.attributes) do
+        html += generate_html_from_nodes(html)
+      end
+    end
+
+    private
+
+    def generate_html_from_nodes(string = '')
       return '' unless @form.nodes.any?
 
       string += "\n"
@@ -24,14 +34,6 @@ module HexletCode
       end.join("\n")
 
       "#{string}\n"
-    end
-
-    def to_html
-      form_node = HexletCode::FormTags::Form.new(@form.attributes)
-      html = ''
-      html += HexletCode::Tag.build(form_node.name, form_node.attributes) do
-        html += html_nodes_string(html)
-      end
     end
   end
 end

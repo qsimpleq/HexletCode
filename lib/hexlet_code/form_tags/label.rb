@@ -12,7 +12,7 @@ module HexletCode
         @name = NAME
         @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
         @block = -> { @value }
-        @attributes.delete(:value)
+        @attributes = @attributes.except(:value)
       end
     end
   end

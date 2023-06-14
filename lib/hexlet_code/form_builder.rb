@@ -15,9 +15,14 @@ module HexletCode
       method: 'post'
     }.freeze
 
-    def initialize(data = Struct.new, attributes = {})
-      (attributes[:action] = attributes.delete(:url)) if attributes.key?(:url)
-      @attributes = {}.merge(DEFAULT_ATTRIBUTES, attributes)
+    def initialize(data, attributes = {})
+      attr = if attributes.key?(:url)
+               attributes[:action] = attributes[:url]
+               attributes.except(:url)
+             else
+               attributes
+             end
+      @attributes = {}.merge(DEFAULT_ATTRIBUTES, attr)
       @data = data
       @fields = {}
       @nodes = []

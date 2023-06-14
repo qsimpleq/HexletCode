@@ -22,7 +22,7 @@ module HexletCode
               "This render type is not supported: #{type}. No such method: HexletCode::FormRenderer#{type_method}"
       end
 
-      renderer.send(type_method)
+      renderer.public_send(type_method)
     end
   end
 end
