@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'form_tags/form'
 require_relative 'form_tags/input_string'
 require_relative 'form_tags/input_submit'
 require_relative 'form_tags/label'

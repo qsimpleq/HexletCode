@@ -4,7 +4,7 @@ require_relative 'base_tag'
 
 module HexletCode
   module FormTags
-    class Form < HexletCode::FormTags::BaseTag
+    class Form < BaseTag
       NAME = :form
       DEFAULT_ATTRIBUTES = {
         action: '#',

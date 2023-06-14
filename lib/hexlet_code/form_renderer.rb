@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'form_builder'
-require_relative 'tag'
 require_relative 'form_tags/form'
+require_relative 'tag'
 
 module HexletCode
+
   class FormRenderer
     HTML_INDENT = ' ' * 2
 

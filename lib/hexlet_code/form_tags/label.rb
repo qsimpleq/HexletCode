@@ -4,7 +4,7 @@ require_relative 'base_tag'
 
 module HexletCode
   module FormTags
-    class Label < HexletCode::FormTags::BaseTag
+    class Label < BaseTag
       NAME = :label
 
       def initialize(attributes = {})

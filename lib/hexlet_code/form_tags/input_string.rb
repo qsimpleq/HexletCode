@@ -4,7 +4,7 @@ require_relative 'base_tag'
 
 module HexletCode
   module FormTags
-    class InputString < HexletCode::FormTags::BaseTag
+    class InputString < BaseTag
       NAME = :input
       DEFAULT_ATTRIBUTES = { type: 'text' }.freeze
 

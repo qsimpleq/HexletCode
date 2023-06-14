@@ -5,7 +5,7 @@ require_relative 'input_string'
 
 module HexletCode
   module FormTags
-    class InputSubmit < HexletCode::FormTags::InputString
+    class InputSubmit < InputString
       DEFAULT_ATTRIBUTES = {
         type: 'submit',
         value: 'Save'

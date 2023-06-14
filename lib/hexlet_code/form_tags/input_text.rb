@@ -4,7 +4,7 @@ require_relative 'base_tag'
 
 module HexletCode
   module FormTags
-    class InputText < HexletCode::FormTags::BaseTag
+    class InputText < BaseTag
       NAME = :textarea
       DEFAULT_ATTRIBUTES = {
         cols: 20,
