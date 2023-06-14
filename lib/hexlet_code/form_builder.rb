@@ -4,7 +4,7 @@ require_relative 'form_tags/form'
 require_relative 'form_tags/input_string'
 require_relative 'form_tags/input_submit'
 require_relative 'form_tags/label'
-require_relative 'form_tags/textarea'
+require_relative 'form_tags/input_text'
 
 module HexletCode
   class FormBuilder
