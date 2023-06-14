@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'base_tag'
-require_relative 'input'
+require_relative 'input_string'
 
 module HexletCode
   module FormTags
-    class InputSubmit < HexletCode::FormTags::Input
+    class InputSubmit < HexletCode::FormTags::InputString
       DEFAULT_ATTRIBUTES = {
         type: 'submit',
         value: 'Save'

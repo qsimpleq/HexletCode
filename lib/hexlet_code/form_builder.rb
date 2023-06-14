@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'form_tags/form'
-require_relative 'form_tags/input'
+require_relative 'form_tags/input_string'
 require_relative 'form_tags/input_submit'
 require_relative 'form_tags/label'
 require_relative 'form_tags/textarea'
@@ -46,11 +46,9 @@ module HexletCode
 
       label(name)
 
-      tag = if attributes[:as] == :text || (attributes[:as] == :value && attributes[:as] == :text)
-              HexletCode::FormTags::Textarea.new(only_attributes)
-            else
-              HexletCode::FormTags::Input.new(only_attributes)
-            end
+      input_type = attributes[:as] || :string
+      class_name = "HexletCode::FormTags::Input#{input_type.capitalize}"
+      tag = Object.const_get(class_name).new(only_attributes)
       @nodes << tag
 
       tag
