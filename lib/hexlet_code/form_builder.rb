@@ -9,19 +9,10 @@ module HexletCode
   class FormBuilder
     attr_accessor :data, :attributes, :fields, :nodes
 
-    DEFAULT_ATTRIBUTES = {
-      action: '#',
-      method: 'post'
-    }.freeze
+    EXCLUDE_ATTRIBUTES = %i[as].freeze
 
-    def initialize(data, attributes = {})
-      attr = if attributes.key?(:url)
-               attributes[:action] = attributes[:url]
-               attributes.except(:url)
-             else
-               attributes
-             end
-      @attributes = {}.merge(DEFAULT_ATTRIBUTES, attr)
+    def initialize(data, url: '#', method: 'post', **attr)
+      @attributes = attr.merge(action: url, method:)
       @data = data
       @fields = {}
       @nodes = []
@@ -34,21 +25,17 @@ module HexletCode
     def label(name, attributes = {})
       attributes[:for] ||= name
       attributes[:value] ||= name.capitalize
-      tag = FormTags::Label.new(attributes)
-      @nodes << tag
 
-      tag
+      FormTags::Label.new(attributes)
     end
 
     def input(name, attributes = {})
       only_attributes = input_attributes(name, attributes)
 
-      label(name)
-
       input_type = attributes[:as] || :string
       class_name = "HexletCode::FormTags::Input#{input_type.capitalize}"
       tag = Object.const_get(class_name).new(only_attributes)
-      @nodes << tag
+      @nodes.push(label(name), tag)
 
       tag
     end
@@ -63,13 +50,12 @@ module HexletCode
 
     class << self
       def build(data, attributes = {})
-        new(data, attributes)
+        new(data, **attributes)
       end
     end
 
     def input_attributes(name, attributes = {})
-      reject_keys = ->(key) { key == :as || (key == :value && attributes[:as] == :text) }
-      only_attributes = attributes.reject { |key| reject_keys.call key }
+      only_attributes = attributes.reject { |key| EXCLUDE_ATTRIBUTES.include?(key) }
       only_attributes[:name] = name
       only_attributes[:value] = @data.public_send(name)
       only_attributes
