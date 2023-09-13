@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ['kirill.babikhin@gmail.com']
 
   spec.summary = 'Form generator'
-  spec.homepage = 'https://github.com/qsimpleq/rails-project-63'
+  spec.homepage = 'https://github.com/qsimpleq/HexletCode'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.1'
 

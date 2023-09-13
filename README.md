@@ -1,6 +1,6 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/qsimpleq/rails-project-63/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/rails-project-63/actions)
-[![CI](https://github.com/qsimpleq/rails-project-63/actions/workflows/main.yml/badge.svg)](https://github.com/qsimpleq/rails-project-63/actions/workflows/main.yml)
+[![Actions Status](https://github.com/qsimpleq/HexletCode/workflows/hexlet-check/badge.svg)](https://github.com/qsimpleq/HexletCode/actions)
+[![CI](https://github.com/qsimpleq/HexletCode/actions/workflows/main.yml/badge.svg)](https://github.com/qsimpleq/HexletCode/actions/workflows/main.yml)
 
 # HexletCode
 
@@ -10,12 +10,12 @@ Simple html form generator
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add hexlet_code --git 'https://github.com/qsimpleq/rails-project-63.git'
+    $ bundle add hexlet_code --git 'https://github.com/qsimpleq/HexletCode.git'
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
     $ gem install specific_install 
-    $ gem specific_install -l 'https://github.com/qsimpleq/rails-project-63.git'
+    $ gem specific_install -l 'https://github.com/qsimpleq/HexletCode.git'
 
 ## Usage
 
@@ -59,7 +59,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/qsimpleq/rails-project-63. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/qsimpleq/rails-project-63/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/qsimpleq/HexletCode. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/qsimpleq/HexletCode/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -67,4 +67,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the HexletCode project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/qsimpleq/rails-project-63/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the HexletCode project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/qsimpleq/HexletCode/blob/main/CODE_OF_CONDUCT.md).
